@@ -82,11 +82,17 @@
 				var left=obj.offsetLeft; //获取的是一个整数值
 				var top=obj.offsetTop+20;
 
+				if(left+toptipbox.offsetWidth>document.body.clientWidth){
+					var demoLeft=document.getElementById("demo").offsetLeft;
+					left=document.body.clientWidth-toptipbox.offsetWidth-demoLeft;
+					if(left<0)left=0;
+				}
+
 				toptipbox.style.left=left+"px";
 				toptipbox.style.top=top+"px";
 
                 obj.onmouseleave= function () {
-                    document.getElementById(id).style.display="none";
+                    setTimeout(function(){document.getElementById(id).style.display="none"},300);
                 }
 			}else{
 				document.getElementById(id).style.display="block";
